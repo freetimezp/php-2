@@ -85,6 +85,46 @@ for ($i = 0; $i < count($array); $i++) {
 	}
 	echo "<br />";
 }
+echo "<hr />";
+
+
+/* static \ global */
+
+$x = 12;
+echo $x . "<br />";
+$x = 10;
+echo $x . "<br />";
+
+function test () {
+	global $x;
+	$x += 10;
+}
+test ();
+echo $x . "<br />";
+
+
+function test_2 () {
+	static $id;
+	$id++;
+	echo $id . "<br />";
+}
+
+for ($i = 0; $i < 10; $i++) {
+	test_2 ();
+}
+
+echo "<hr />";
+
+
+/* files */
+$pageTitle = "Main page";
+require "header.php"; /* page dont work if mistake in require, if try include = mistake will be passed */
+
+
+echo "Documents body";
+
+
+require "footer.php";
 
 
 
