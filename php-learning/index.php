@@ -120,11 +120,94 @@ echo "<hr />";
 $pageTitle = "Main page";
 require "header.php"; /* page dont work if mistake in require, if try include = mistake will be passed */
 
-
 echo "Documents body";
 
-
 require "footer.php";
+
+
+/* forms */
+
+require "form.php";
+
+/* php */
+
+echo "<hr />";
+
+$s = 14;
+
+if (isset($s)) echo "Working";
+else echo "Not working";
+
+echo "<hr />";
+
+unset($s);
+if (isset($s)) echo "Working";
+else echo "Not working";
+
+echo "<hr />";
+
+$s = "10";
+$null = 0;
+
+echo "Is numeric = " .is_numeric($s)."<br />"; 
+echo "Is integer = " .is_integer($s)."<br />";
+echo "Is double = " .is_double($s)."<br />";
+echo "Is string = " .is_string($s)."<br />";
+echo "Is boolean = " .is_bool($s)."<br />";
+echo "Is scalar = " .is_scalar($s)."<br />";
+echo "Is null = " .is_null($null)."<br />";
+echo "Is array = " .is_array($s)."<br />";
+echo "Type = " .getType($s)."<br />";
+echo "<hr />";
+
+
+/* math */
+
+
+echo M_PI."<br />";
+
+$x = -15;
+echo abs($x)."<br />";
+
+$y = 2.27542242345;
+echo round($y, 4)."<br />";
+$y = 2.00000001;
+echo ceil($y)."<br />";
+$y = 7.99999;
+echo floor($y)."<br />";
+
+$s = mt_rand(1, 10000);
+echo $s."<br />";
+
+echo min(12,23,42,-1,-6,-121)."<br />";
+echo max(12,23,42,-1,-6,-121)."<br />";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
