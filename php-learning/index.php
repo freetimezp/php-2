@@ -1,5 +1,95 @@
 <?php
 
+/* string */
+
+$string = "This is some example";
+
+echo strlen($string)."<br />";
+echo strpos($string, "exa")."<br />";
+echo strpos($string, "is", 4)."<br />";
+
+if (strpos($string, "T") === false) {
+	echo "T not found"."<br />";
+} else {
+	echo "T found"."<br />";
+}
+
+echo substr($string, 3)."<br />";
+echo substr($string, 3, 8)."<br />";
+echo substr($string, 3, -3)."<br />";
+
+echo str_replace("is", "abc", $string)."<br />";
+echo str_replace(array("is","pl"), array("abc","123"), $string)."<br />";
+
+
+$str = "<b>Bold fonts, XAXAXA!!!</b>";
+echo htmlspecialchars($str)."<br />";
+
+echo strtolower($string)."<br />";
+echo strtoupper($string)."<br />";
+
+echo md5($string)."<br />";
+
+echo trim("aasda   sdfs   ghfg   gfhfg        fdgdfgfdgfd")."<br />";
+
+echo "<hr />";
+
+/* array */
+
+$array = array(12, 4, 142, 3424, 23, 1453, -120, 0);
+
+echo count($array)."<br />";
+
+sort($array);
+print_r($array);
+echo "<br />";
+
+rsort($array);
+print_r($array);
+echo "<br />";
+
+asort($array);
+print_r($array);
+echo "<br />";
+
+arsort($array);
+print_r($array);
+echo "<br />";
+
+
+$array = array("923" => 92, "123" => 32, "12" => 54);
+
+ksort($array);
+print_r($array);
+echo "<br />";
+
+krsort($array);
+print_r($array);
+echo "<br />";
+
+shuffle($array);
+print_r($array);
+echo "<br />";
+
+echo in_array(92, $array)."<br />";
+echo in_array(12, $array)."<br />";
+
+
+$arr_1 = array(4, 2, 5);
+$arr_2 = array(3, 0, 9, 4);
+$arr_3 = array_merge($arr_1, $arr_2);
+print_r($arr_3);
+echo "<br />";
+
+$arrDone = array(1,2,3,4,5,6,7,8,9);
+print_r(array_slice($arrDone, 1));
+echo "<br />";
+print_r(array_slice($arrDone, 1, 2));
+echo "<br />";
+print_r(array_slice($arrDone, 1, -2));
+echo "<br />";
+
+echo "<hr />";
 /* function */
 
 function printWords ($word,$a,$b) {
@@ -16,6 +106,9 @@ $x = 12;
 $y = 35;
 
 printWords($sum,$x,$y);
+
+
+
 
 
 /* array */
@@ -182,6 +275,8 @@ echo $s."<br />";
 echo min(12,23,42,-1,-6,-121)."<br />";
 echo max(12,23,42,-1,-6,-121)."<br />";
 
+
+/* string */
 
 
 
