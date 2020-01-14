@@ -1,5 +1,27 @@
 <?php
 
+/* date */
+
+echo time()."<br />";
+echo microtime()."<br />";
+
+$start = microtime(true);
+echo "Script work ".(microtime(true) - $start)." second"."<br />";
+
+echo date("Y-m-d H:i:s")."<br />";
+echo date("Y-m-d H:i:s", 342342346)."<br />";
+
+$time = mktime(6, 24, 42, 5, 8, 1989);
+echo date("Y-m-d H:i:s", $time)."<br />";
+
+$array = getDate($time);
+print_r($array);
+echo "<br />";
+
+echo checkdate(11, 31, 2020)."<br />";
+echo checkdate(12, 31, 2020)."<br />";
+
+echo "<hr />";
 /* string */
 
 $string = "This is some example";
