@@ -1,5 +1,14 @@
 <?php
 
+/* php */
+
+// phpinfo();
+
+echo $_SERVER["REMOTE_ADDR"]."<br />";
+echo $_SERVER["TEMP"]."<br />";
+
+echo "<hr />";
+
 /* user */
 
 echo __FILE__."<br />";
