@@ -2,6 +2,15 @@
 
 /* php */
 
+// header("Location: abc.html");
+// exit;
+
+$abc = 67;
+$abc++;
+
+echo "<hr />";
+/* php */
+
 // phpinfo();
 
 echo $_SERVER["REMOTE_ADDR"]."<br />";
