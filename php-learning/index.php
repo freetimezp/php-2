@@ -1,5 +1,34 @@
 <?php
 
+/* file */
+
+// $file = fopen("a.txt", "a+t");
+// fwrite($file, "Some new word\nrow1\nrow2");
+// fclose($file);
+
+$file = fopen("a.txt", "r+t");
+
+while (!feof($file)) {
+	echo fread($file, 2)."<br />";
+}
+
+fseek($file, 0);
+echo fread($file, 1)."<br />";
+
+fclose($file);
+
+file_put_contents("c.txt", "Qwerty TEST SOme");
+echo file_get_contents("c.txt")."<br />";
+
+echo file_exists("a.txt")."<br />";
+
+echo filesize("c.txt")."<br />";
+
+rename("c.txt","b.txt");
+
+unlink("b.txt");
+
+echo "<hr />";
 /* date */
 
 echo time()."<br />";
