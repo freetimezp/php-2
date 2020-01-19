@@ -1,5 +1,14 @@
 <?php
 
+/* user */
+
+echo __FILE__."<br />";
+
+echo fileperms(__FILE__)."<br />";
+chmod(__FILE__, 0777); // read 4, write 2, execute 1
+
+echo "<hr />";
+
 /* file */
 
 // $file = fopen("a.txt", "a+t");
