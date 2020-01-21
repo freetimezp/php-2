@@ -1,5 +1,22 @@
 <?php
 
+/* post */
+
+$message = "My first message by post";
+$to = "kraftukrnet@ukr.net";
+$from = "gosha@mail.ru";
+$subject = "Theme message";
+//$subject = "=?utf-8?B?".base64_encode($subject)."?=";
+$headers = "From: $from\r\nReply-to: $from\r\nContent-type: text/plain; charset=utf-8\r\n";
+
+mail($to, $subject, $message, $headers);
+
+
+
+
+
+
+echo "<hr />";
 /* php */
 
 // header("Location: abc.html");
