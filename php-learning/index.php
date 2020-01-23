@@ -1,5 +1,32 @@
 <?php
 
+/* session */
+
+session_start();
+
+$numt = (isset ($_SESSION["numt"])) ? $_SESSION["numt"] : 0;
+$numt++;
+$_SESSION["numt"] = $numt;
+echo "User update page $numt times<br />";
+
+session_destroy();
+
+echo "<hr />";
+/* cookie */
+
+// setcookie("num", 10, time () + 5);
+// if (isset ($_COOKIE["num"])) {
+// 	echo "Cookie exist"."<br />";
+// } else {
+// 	echo "Cookie dont exist"."<br />";
+// }
+
+// $num = (isset ($_COOKIE["num"])) ? $_COOKIE["num"] : 0;
+// $num++;
+// setcookie("num", $num, time () + 4);
+// echo "User update page $num times<br />";
+
+echo "<hr />";
 /* post */
 
 $message = "My first message by post";
@@ -10,11 +37,6 @@ $subject = "Theme message";
 $headers = "From: $from\r\nReply-to: $from\r\nContent-type: text/plain; charset=utf-8\r\n";
 
 mail($to, $subject, $message, $headers);
-
-
-
-
-
 
 echo "<hr />";
 /* php */
