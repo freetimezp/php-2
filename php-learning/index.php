@@ -1,5 +1,93 @@
 <?php
 
+/* form  */
+
+session_start();
+if (isset($_POST["send"])) {
+	// print_r($_POST);
+	$from = htmlspecialchars($_POST["from"]);
+	$to = htmlspecialchars($_POST["to"]);
+	$subject = htmlspecialchars($_POST["subject"]);
+	$message = htmlspecialchars($_POST["message"]);
+	$_SESSION["from"] = $from;
+	$_SESSION["to"] = $to;
+	$_SESSION["subject"] = $subject;
+	$_SESSION["message"] = $message;
+
+	$error_from = "";
+	$error_to = "";
+	$error_subject = "";
+	$error_message = "";
+
+	$error = false;
+
+	if ($from == "" || !preg_match("/@/", $from)) {
+		$error_from = "Enter correct email!";
+		$error = true;
+	}
+	if ($to == "" || !preg_match("/@/", $to)) {
+		$error_to = "Enter correct email!";
+		$error = true;
+	}
+	if (strlen($subject) == "") {
+		$error_subject = "Enter subject of you message!";
+		$error = true;
+	}
+	if (strlen($message) == "") {
+		$error_message = "Enter you message!";
+		$error = true;
+	}
+
+	if (!$error) {
+		$subject = "=?utf-8?B?".base64_encode($subject)."?=";
+		$headers = "From: $from\r\nReply-to: $from\r\nContent-type: text/plain; charset=utf-8\r\n";
+		mail ($to, $subject, $message, $headers);
+		header("Location: success.php?send=1");
+		exit;
+	}
+}
+
+echo "<hr />";
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Form feedback</title>
+</head>
+<body>
+	
+<h2>Form feedback</h2>
+<form name="feedback" method="post" action=""> 
+	<label>From:</label><br />
+		<input type="text" name="from" value="<?php echo $_SESSION["from"] ?>" />
+		<span style="color: red"><?php echo $error_from ?></span><br />
+	<label>To:</label><br />
+		<input type="text" name="to" value="<?php echo $_SESSION["to"] ?>" />
+		<span style="color: red"><?php echo $error_to ?></span><br />
+	<label>Subject:</label><br />
+		<input type="text" name="subject" value="<?php echo $_SESSION["subject"] ?>" />
+		<span style="color: red"><?php echo $error_subject ?></span><br />
+	<label>Message:</label><br />
+		<textarea name="message" cols="30" rows="8"><?php echo $_SESSION["message"] ?></textarea>
+		<span style="color: red"><?php echo $error_message ?></span><br />
+		<input type="submit" name="send" value="send" /><br />
+
+</form>
+
+</body>
+</html>
+
+
+<?php
+
+/* form  */
+
+echo "<hr />";
 /* session */
 
 session_start();
