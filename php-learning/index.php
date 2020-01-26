@@ -1,5 +1,14 @@
 <?php
 
+/* SQL  */
+
+$mysqli = new mysqli ("localhost", "root", "", "myBase");
+$mysqli->query("SET NAMES 'utf8'");
+
+
+
+$mysqli->close();
+
 /* form  */
 
 session_start();
@@ -46,6 +55,7 @@ if (isset($_POST["send"])) {
 		exit;
 	}
 }
+
 
 echo "<hr />";
 ?>
