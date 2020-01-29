@@ -5,7 +5,19 @@
 $mysqli = new mysqli ("localhost", "root", "", "myBase");
 $mysqli->query("SET NAMES 'utf8'");
 
+$success = $mysqli->query("INSERT INTO `users` (`login`, `password`, `reg_date`) VALUES ('evgen', '".md5("123")."', '".time()."')");
 
+echo $success; 
+
+for ($i = 1; $i < 10; $i++) {
+	$success = $mysqli->query("INSERT INTO `users` (`login`, `password`, `reg_date`) VALUES ('$i', '".md5("$i")."', '".time()."')");
+}
+
+$mysqli->query("UPDATE `myBase`.`users` SET `reg_date` = '123' WHERE `users`.`id`=4");
+
+$mysqli->query("UPDATE `myBase`.`users` SET `reg_date` = '10' WHERE `users`.`login`='shop' OR (`users`.`id` > 4 AND `users`.`id` < 8 )");
+
+$mysqli->query("DELETE FROM `myBase`.`users` WHERE `users`.`id` > 8");
 
 $mysqli->close();
 
