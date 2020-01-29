@@ -1,5 +1,40 @@
 <?php
 
+function printResult ($result_set) {
+	while (($row = $result_set->fetch_assoc()) != false) {
+		print_r($row);
+		echo "<br />";
+	}
+	echo "Count rows = ".$result_set->num_rows."<br />";
+}
+
+$mysqli = new mysqli ("localhost", "root", "", "myBase");
+$mysqli->query("SET NAMES 'utf8'");
+
+for ($i = 0; $i < 10; $i++) {
+	$mysqli->query("INSERT INTO `users` (`login`, `password`, `reg_date`) VALUES ('user_$i', '".md5("123")."', '".time()."')");
+}
+
+$result_set = $mysqli->query("SELECT * FROM `users`");
+printResult($result_set);
+
+$result_set = $mysqli->query("SELECT `id`,`login` FROM `users`");
+printResult($result_set);
+
+$result_set = $mysqli->query("SELECT * FROM `users` ORDER BY `id` DESC");
+printResult($result_set);
+
+$result_set = $mysqli->query("SELECT * FROM `users` ORDER BY `login` DESC LIMIT 0,2");
+printResult($result_set);
+
+$result_set = $mysqli->query("SELECT `id`,`login` FROM `users` WHERE `login` LIKE '%ser%' ORDER BY `id` ASC");
+printResult($result_set);
+
+$result_set = $mysqli->query("SELECT COUNT(`id`) FROM `users`");
+printResult($result_set);
+
+
+$mysqli->close();
 /* SQL  */
 
 $mysqli = new mysqli ("localhost", "root", "", "myBase");
@@ -18,6 +53,7 @@ $mysqli->query("UPDATE `myBase`.`users` SET `reg_date` = '123' WHERE `users`.`id
 $mysqli->query("UPDATE `myBase`.`users` SET `reg_date` = '10' WHERE `users`.`login`='shop' OR (`users`.`id` > 4 AND `users`.`id` < 8 )");
 
 $mysqli->query("DELETE FROM `myBase`.`users` WHERE `users`.`id` > 8");
+
 
 $mysqli->close();
 
